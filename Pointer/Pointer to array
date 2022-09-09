@@ -1,0 +1,27 @@
+#include<iostream>
+using namespace std;
+
+int main()
+{
+    int *a[3],i,j,col;
+    
+    
+    for(i=0;i<3;i++)
+    {
+        cout<<"Enter your desire column of the matrix :  "<<endl;
+        cin>>col;
+        a[i]=(int*)malloc(col*sizeof(int));
+        cout<<"Enter your element of the matrix :"<<endl;
+        for(j=0;j<col;j++)
+        cin>>a[i][j];
+    }
+    cout<<"Your matrix is :"<<endl;
+    for(i=0;i<3;i++)
+    {
+        for(j=0;j<col;j++)
+        cout<<a[i][j]<< " ";
+        cout<<endl;
+    }
+    for(i=0;i<3;i++)
+    free(a[i]);
+}
