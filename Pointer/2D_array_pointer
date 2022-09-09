@@ -1,0 +1,24 @@
+#include<iostream>
+using namespace std;
+
+int main()
+{
+    int i,j,rows;
+    int (*ptr)[3];
+    cout<<"Enter your desire rows : ";
+    cin>>rows;
+    ptr=(int (*)[3])malloc(rows*3*sizeof(int));
+    for(i=0;i<rows;i++)
+   {
+    for(j=0;j<3;j++)
+     cin>>ptr[i][j];
+   }
+   cout<<"Your matrix is : "<<endl;
+    for(i=0;i<rows;i++)
+   {
+    for(j=0;j<3;j++)
+     cout<<ptr[i][j] <<" ";
+     cout<<endl;
+   }
+   free(ptr);
+}
