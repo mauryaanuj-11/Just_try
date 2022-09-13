@@ -1,0 +1,29 @@
+#include<iostream>
+using namespace std;
+
+
+int binary(int *a,int data,int n)
+{
+    int l=0,r=n,mid;
+      while(l<=r)
+      {
+          mid=(l+r)/2;
+          if(data ==a[mid])
+          return mid;
+          else if (data<a[mid])
+          r=mid-1;
+          else
+          l=mid+1;
+      }
+      return -1;
+}
+
+int main()
+{
+    int a[5]={11,22,33,44,55},l,r,mid,data,num;
+    cin>>data;
+   
+    num=binary(a,data,4);
+    cout<<num;
+}
+
