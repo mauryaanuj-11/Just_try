@@ -1,0 +1,21 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+   pair<string,string>old_arr[] = 
+   {
+     {"Ground", "Grass"},
+     {"Ground", "Grass"}
+   //   make_pair("Floor", "Cement"),
+   //   make_pair("Table", "Wood")
+   };                    
+   
+   for(auto it:old_arr)
+   cout<<it.first<<" "<<it.second<<endl;
+
+   
+
+}
+
+   
