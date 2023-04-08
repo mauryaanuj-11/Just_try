@@ -1,0 +1,97 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+class Node{
+    public:
+    int data;
+    Node* next;
+    Node* prev;
+
+    Node(int data){
+        this->data=data;
+        this->next=NULL;
+        this->prev=NULL;
+    }
+};
+
+void InsertAtHead(Node* &head,int d)
+{
+    Node* temp;
+    Node* newnode=new Node(d);
+    if(head==NULL){
+        head=temp=newnode;
+    }
+    else{
+        newnode->prev=temp;
+        temp->next=newnode;
+        temp=newnode;
+    }
+}
+
+void InsertAtHeading(Node* &head,int d)
+{
+    Node* newnode=new Node(d);
+    head->prev=newnode;
+    newnode->next=head;
+    head=newnode;
+}
+
+void InstertAtPosition(Node* &head,int pos,int d)
+{
+   
+    if(pos==1){
+        InsertAtHeading(head,d);
+        return ;
+    }
+     Node* temp=head;
+        int cnt=1;
+        Node* newnode=new Node(d);
+        while(cnt<pos-1){
+            temp=temp->next;
+            cnt++; 
+        }
+      if(temp->next==NULL){
+        newnode->prev=temp;
+        temp->next=newnode;
+        return ;
+      }
+        
+       newnode->prev=temp;
+       newnode->next=temp->next;
+       temp->next=newnode;
+       newnode->next->prev=newnode;
+    
+    // newnode->next=temp->next;
+    // temp->next->prev=newnode;
+    // temp->next=newnode;
+    // newnode->prev=temp;
+
+        
+  
+}
+
+void print(Node* &head){
+    Node* temp=head;
+    while(temp!=0){
+        cout<<temp->data<<" ";
+        temp=temp->next;
+    }
+    cout<<endl;
+}
+int main()
+{
+    Node* head=NULL;
+    Node* tail=NULL;
+    InsertAtHead(head,10);
+    InsertAtHead(head,11);
+    InsertAtHead(head,12);
+    InsertAtHead(head,13);
+    InsertAtHead(head,14);
+    InsertAtHead(head,15);
+    print(head);
+    InsertAtHeading(head,18);
+    print(head);
+    InstertAtPosition(head,8,100);
+    print(head);
+}
+
