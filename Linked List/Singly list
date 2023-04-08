@@ -1,0 +1,133 @@
+//1-Method (tried by jenny mam)
+#include<bits/stdc++.h>
+using namespace std;
+
+class Node{
+    public:
+    int data;
+    Node* next;
+
+    Node(int data){
+        this->data=data;
+        this->next=NULL;
+    }
+
+};
+
+void print(Node* &head)
+{
+    Node* temp;
+     temp=head;
+    while (temp!=NULL)
+    {
+        cout<<temp->data<<" ";
+        temp=temp->next;
+    }
+}
+
+int main()
+{
+    Node* head=NULL;
+    Node* temp;
+    int n,i=0;
+    cout<<"Enter your desire link list ";
+    cin>>n;
+    while (i<n)
+    { 
+        int m;
+        cout<<"Enter your data ";
+        cin>>m;
+       Node* newnode=new Node(m);
+       if(head==NULL)
+        temp=head=newnode;
+        else{
+            temp->next=newnode;
+            temp=newnode;
+        }
+        i++;
+    }
+
+   print(head);
+    
+    
+}
+
+//2-Method (tried through love babber)
+#include<bits/stdc++.h>
+using namespace std;
+
+class Node{
+    public:
+    int data;
+    Node* next;
+
+    Node(int data){
+        this->data=data;
+        this->next=NULL;
+
+    }
+};
+
+void InsertAtTail( Node* &tail,int d){
+   Node* temp=new Node(d);
+   tail->next=temp;
+   tail=temp;  
+}
+
+void InsertAtHead(Node* &head, int d){
+   // Node* temp=head;
+    Node* temp=new Node(d);
+    temp->next=head;
+    head=temp;
+
+}
+
+void print(Node* &head){
+    Node* temp=head;
+    while(temp!=0){
+        cout<<temp->data<<" ";
+        temp=temp->next;
+    }
+    cout<<endl;
+}
+
+void deletenode(Node* &head,Node* &tail,int pos){
+    Node* temp;
+    if(pos==1){
+        temp=head;
+        head=temp->next;
+        free(temp);
+    }
+    Node* curr=head;
+    Node* prev=NULL;
+    int cnt=1;
+    while(cnt<pos){
+        prev=curr;
+        curr=curr->next;
+        cnt++;
+    }
+    if(curr->next==NULL){
+        prev->next=NULL;
+        delete curr;
+        return ;
+    }
+    else{
+        prev->next=curr->next;
+        curr->next=NULL;
+        delete curr;
+    }
+}
+
+int main(){
+    Node* newnode=new Node(8);
+    Node* head=newnode;
+    Node* tail=newnode;
+    InsertAtTail(tail,11);
+    InsertAtTail(tail,14);
+    InsertAtTail(tail,18);
+    InsertAtTail(tail,20);
+    print(head);
+    deletenode(head,tail,5);
+    print(head);
+    return 0;
+}
