@@ -1,0 +1,28 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    vector<int> arr{1,2,3,7,5};
+    int k=12;
+    int i=0,j=0,maxi=-1,sum=0;
+    while(j<arr.size()){
+        sum+=arr[j];
+        if(sum<k)
+        j++;
+        else if(sum==k){
+            maxi=max(maxi,(j-i+1));
+            j++;
+        }
+        else if(sum>k){
+            while(sum>k){
+                sum-=arr[i];
+                i++;
+            }
+            if(sum==k)
+            maxi=max(maxi,(j-i+1));
+           j++;
+        }
+    }
+    cout<<maxi;
+}
